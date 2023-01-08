@@ -5,7 +5,7 @@ export const Layout = styled.div`
   flex-direction: column;
   gap: 30px;
   width: 700px;
-  margin: 60px auto 0px;
+  margin: 60px auto 60px;
   padding: 40px 80px;
   border-radius: 6px;
   box-shadow: 0 5px 15px rgb(0 0 0 / 20%);

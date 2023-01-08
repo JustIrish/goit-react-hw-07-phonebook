@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice';
+import { deleteContact } from 'redux/operations';
 import PropTypes from 'prop-types';
 import {
   ContactItem,
@@ -17,7 +17,7 @@ export const ContactListItem = ({ contact: { id, name, number } }) => {
       <TextWrap>
         <ContactMarker></ContactMarker>
         <ContactText>
-          {name}: {number}
+          <p>{name}:</p> <p>{number}</p>
         </ContactText>
       </TextWrap>
       <BtnDelete type="button" onClick={() => dispatch(deleteContact(id))}>

@@ -23,6 +23,10 @@ export const ContactMarker = styled.span`
 `;
 
 export const ContactText = styled.p`
+  width: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   margin-left: 7px;
   font-size: 18px;
   font-weight: 500;
