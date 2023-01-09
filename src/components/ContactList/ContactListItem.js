@@ -17,7 +17,7 @@ export const ContactListItem = ({ contact: { id, name, number } }) => {
       <TextWrap>
         <ContactMarker></ContactMarker>
         <ContactText>
-          <p>{name}:</p> <p>{number}</p>
+          <span>{name}:</span> <span>{number}</span>
         </ContactText>
       </TextWrap>
       <BtnDelete type="button" onClick={() => dispatch(deleteContact(id))}>
