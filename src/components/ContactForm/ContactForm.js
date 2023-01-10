@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from 'react';
 import { addContact } from 'redux/operations';
-import { selectContacts } from 'redux/selectors';
+import { selectContacts, selectIsLoading } from 'redux/selectors';
+import { Loader } from 'components/Loader/Loader';
 import { nanoid } from 'nanoid';
 import toast from 'react-hot-toast';
 import {
@@ -14,6 +15,7 @@ import {
 export const ContactForm = () => {
   const dispatch = useDispatch();
   const contacts = useSelector(selectContacts);
+  const isLoading = useSelector(selectIsLoading);
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
@@ -50,11 +52,13 @@ export const ContactForm = () => {
 
     const contact = { name, number };
     dispatch(addContact(contact))
-      .then(() => toast.success('Contact added!'))
+      .then(() => {
+        toast.success('Contact added!');
+        reset();
+      })
       .catch(() =>
         toast.error('Something went wrong...Try reloading the page')
       );
-    reset();
   };
 
   const reset = () => {
@@ -86,7 +90,9 @@ export const ContactForm = () => {
         title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
         required
       />
-      <BtnStyled type="submit">Add contact</BtnStyled>
+      <BtnStyled type="submit" disabled={isLoading}>
+        {isLoading ? <Loader /> : 'Add contact'}
+      </BtnStyled>
     </FormStyled>
   );
 };
